@@ -1,4 +1,4 @@
 <li>
   <%= todo.name %>
-  <%= link_to 'Delete', todo, method: :delete %>
+  <%= link_to 'Delete', '#', data: { reflex: 'click->Todo#delete', id: todo.id } %>
 </li>
