@@ -1,4 +1,13 @@
 <li>
-  <%= todo.name %>
-  <%= link_to 'Delete', '#', data: { reflex: 'click->Todo#delete', id: todo.id } %>
+  <% if todo.id == @editing_id %>
+    <%= form_for todo, data: { reflex: 'submit->Todo#update', id: todo.id } do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit 'Save' %>
+      <button data-reflex="click->Todo#cancel_edit">Cancel</button>
+    <% end %>
+  <% else %>
+    <%= todo.name %>
+    <button data-reflex="click->Todo#edit" data-id="<%= todo.id %>">Edit</button>
+    <%= link_to 'Delete', '#', data: { reflex: 'click->Todo#delete', id: todo.id } %>
+  <% end %>
 </li>
