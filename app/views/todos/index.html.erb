@@ -3,5 +3,7 @@
 <%= render 'new_todo_form', todo: @todo %>
 
 <ul>
-  <%= render @todos %>
+  <% @todos.each do |todo| %>
+    <%= render TodoComponent.new(todo: todo, editing_id: @editing_id) %>
+  <% end %>
 </ul>
