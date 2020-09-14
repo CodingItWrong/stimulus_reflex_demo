@@ -1,14 +1,30 @@
 class TodoComponent < ViewComponentReflex::Component
   def initialize(todo:, editing_id:)
     @todo = todo
-    @editing_id = editing_id
+    @editing = false
+  end
+
+  def collection_key
+    @todo.id
+  end
+
+  def edit
+    @editing = true
+  end
+
+  def cancel_edit
+    @editing = false
+  end
+
+  def delete
+    @todo.destroy!
   end
 
   private
 
-  attr_reader :todo, :editing_id
+  attr_reader :todo
 
   def editing?
-    todo.id == editing_id
+    @editing
   end
 end

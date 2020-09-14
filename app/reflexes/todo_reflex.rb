@@ -5,22 +5,10 @@ class TodoReflex < ApplicationReflex
     Todo.create!(todo_params)
   end
 
-  def edit
-    self.editing_todo_id = todo_id
-  end
-
-  def cancel_edit
-    self.editing_todo_id = nil
-  end
-
   def update
     Todo.find(editing_todo_id)
         .update!(todo_params)
     self.editing_todo_id = nil
-  end
-
-  def delete
-    Todo.find(todo_id).destroy!
   end
 
   private

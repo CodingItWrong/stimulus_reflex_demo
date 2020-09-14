@@ -1,13 +1,15 @@
-<li>
-  <% if editing? %>
-    <%= form_for todo, data: { reflex: 'submit->Todo#update' } do |f| %>
-      <%= f.text_field :name %>
-      <%= f.submit 'Save' %>
-      <button data-reflex="click->Todo#cancel_edit">Cancel</button>
+<%= component_controller do %>
+  <li>
+    <% if editing? %>
+      <%= form_for todo, data: { reflex: 'submit->Todo#update' } do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit 'Save' %>
+        <%= reflex_tag :cancel_edit, :button, 'Cancel' %>
+      <% end %>
+    <% else %>
+      <%= todo.name %>
+      <%= reflex_tag :edit, :button, 'Edit' %>
+      <%= reflex_tag :delete, :button, 'Delete' %>
     <% end %>
-  <% else %>
-    <%= todo.name %>
-    <button data-reflex="click->Todo#edit" data-id="<%= todo.id %>">Edit</button>
-    <%= link_to 'Delete', '#', data: { reflex: 'click->Todo#delete', id: todo.id } %>
-  <% end %>
-</li>
+  </li>
+<% end %>
