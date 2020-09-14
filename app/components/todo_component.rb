@@ -1,4 +1,4 @@
-class TodoComponent < ViewComponent::Base
+class TodoComponent < ViewComponentReflex::Component
   def initialize(todo:, editing_id:)
     @todo = todo
     @editing_id = editing_id
