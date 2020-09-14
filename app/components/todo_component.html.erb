@@ -1,5 +1,5 @@
 <li>
-  <% if todo.id == @editing_id %>
+  <% if editing? %>
     <%= form_for todo, data: { reflex: 'submit->Todo#update' } do |f| %>
       <%= f.text_field :name %>
       <%= f.submit 'Save' %>
