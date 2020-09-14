@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'stimulus_reflex', '~> 3.3.0.pre4'
 gem 'view_component'
+gem 'view_component_reflex'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
